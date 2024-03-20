@@ -10,4 +10,5 @@ import react from '@vitejs/plugin-react'
         "@": path.resolve(__dirname, "./src"),
       },
     },
+    base: "bio-webpage"
   })
