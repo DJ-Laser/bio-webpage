@@ -1,8 +1,14 @@
 import { PropsWithChildren } from "react";
+import { largeText, smallText } from "./theme/colors";
+import { cn } from "@/lib/utils";
+
+interface TypographyProps {
+  style?: string;
+}
 
 export function Center({ children }: PropsWithChildren) {
   return (
-    <div className="w-full flex flex-row justify-center items-center">
+    <div className={cn("w-full flex flex-row justify-center items-center")}>
       {children}
     </div>
   );
@@ -10,59 +16,100 @@ export function Center({ children }: PropsWithChildren) {
 
 export function BlockCenter({ children }: PropsWithChildren) {
   return (
-    <div className="w-full h-full flex flex-row justify-center items-center">
+    <div
+      className={cn("w-full h-full flex flex-row justify-center items-center")}
+    >
       {children}
     </div>
   );
 }
 
-export function HMax({ children }: PropsWithChildren) {
+export function HMax({ children, style }: PropsWithChildren<TypographyProps>) {
   return (
-    <h1 className="scroll-m-20 text-5xl font-extrabold tracking-tight lg:text-6xl">
+    <h1
+      className={cn(
+        "scroll-m-20 text-5xl font-extrabold tracking-tight lg:text-6xl",
+        largeText,
+        style
+      )}
+    >
       {children}
     </h1>
   );
 }
 
-export function H1({ children }: PropsWithChildren) {
+export function H1({ children, style }: PropsWithChildren<TypographyProps>) {
   return (
-    <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+    <h1
+      className={cn(
+        "scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl",
+        largeText,
+        style
+      )}
+    >
       {children}
     </h1>
   );
 }
 
-export function H2({ children }: PropsWithChildren) {
+export function H2({ children, style }: PropsWithChildren<TypographyProps>) {
   return (
-    <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+    <h2
+      className={cn(
+        "scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0",
+        largeText,
+        style
+      )}
+    >
       {children}
     </h2>
   );
 }
 
-export function H3({ children }: PropsWithChildren) {
+export function H3({ children, style }: PropsWithChildren<TypographyProps>) {
   return (
-    <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+    <h3
+      className={cn(
+        "scroll-m-20 text-2xl font-semibold tracking-tight",
+        largeText,
+        style
+      )}
+    >
       {children}
     </h3>
   );
 }
 
-export function H4({ children }: PropsWithChildren) {
+export function H4({ children, style }: PropsWithChildren<TypographyProps>) {
   return (
-    <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
+    <h4
+      className={cn(
+        "scroll-m-20 text-xl font-semibold tracking-tight",
+        largeText,
+        style
+      )}
+    >
       {children}
     </h4>
   );
 }
 
-export function P({ children }: PropsWithChildren) {
-  return <p className="leading-7 [&:not(:first-child)]:mt-6">{children}</p>;
+export function P({ children, style }: PropsWithChildren<TypographyProps>) {
+  return (
+    <p className={cn("leading-7 [&:not(:first-child)]:mt-6", smallText, style)}>
+      {children}
+    </p>
+  );
 }
 
-export function Blockquote({ children }: PropsWithChildren) {
+export function Blockquote({
+  children,
+  style,
+}: PropsWithChildren<TypographyProps>) {
   return (
-    <blockquote className="mt-6 border-l-2 pl-6 italic">{children}</blockquote>
+    <blockquote className={cn("mt-6 border-l-2 pl-6 italic", smallText, style)}>
+      {children}
+    </blockquote>
   );
 }
 
@@ -81,22 +128,43 @@ export function List({
   );
 }
 
-export function InlineCode({ children }: PropsWithChildren) {
+export function InlineCode({
+  children,
+  style,
+}: PropsWithChildren<TypographyProps>) {
   return (
-    <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+    <code
+      className={cn(
+        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold",
+        smallText,
+        style
+      )}
+    >
       {children}
     </code>
   );
 }
 
-export function Lead({ children }: PropsWithChildren) {
-  return <p className="text-xl text-muted-foreground">{children}</p>;
+export function Lead({ children, style }: PropsWithChildren<TypographyProps>) {
+  return (
+    <p className={cn("text-xl text-muted-foreground", smallText, style)}>
+      {children}
+    </p>
+  );
 }
 
-export function Small({ children }: PropsWithChildren) {
-  return <small className="text-sm font-medium leading-none">{children}</small>;
+export function Small({ children, style }: PropsWithChildren<TypographyProps>) {
+  return (
+    <small className={cn("text-sm font-medium leading-none", smallText, style)}>
+      {children}
+    </small>
+  );
 }
 
-export function Muted({ children }: PropsWithChildren) {
-  return <p className="text-sm text-muted-foreground">{children}</p>;
+export function Muted({ children, style }: PropsWithChildren<TypographyProps>) {
+  return (
+    <p className={cn("text-sm text-muted-foreground", smallText, style)}>
+      {children}
+    </p>
+  );
 }
