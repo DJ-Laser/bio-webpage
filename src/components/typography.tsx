@@ -1,9 +1,29 @@
 import { PropsWithChildren } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { largeText, smallText } from "./theme/colors";
 import { cn } from "@/lib/utils";
 
 interface TypographyProps {
   style?: string;
+}
+
+export function Link({
+  children,
+  to,
+}: PropsWithChildren<{ to: string } & TypographyProps>) {
+  return (
+    <span className="text-blue-600 hover:underline visited:text-purple-600">
+      <RouterLink to={to}>{children}</RouterLink>
+    </span>
+  );
+}
+
+export function UrlLink({ to }: { to: string } & TypographyProps) {
+  return (
+    <span className="text-blue-600 hover:underline visited:text-purple-600">
+      <RouterLink to={to}>{to}</RouterLink>
+    </span>
+  );
 }
 
 export function Center({ children }: PropsWithChildren) {
@@ -21,6 +41,15 @@ export function BlockCenter({ children }: PropsWithChildren) {
     >
       {children}
     </div>
+  );
+}
+
+export function Separation({ height = 10 }: { height?: number }) {
+  return (
+    <div
+      className={cn("w-full")}
+      style={{ height: 0.25 * height + "rem" }}
+    ></div>
   );
 }
 
@@ -56,7 +85,7 @@ export function H2({ children, style }: PropsWithChildren<TypographyProps>) {
   return (
     <h2
       className={cn(
-        "scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0",
+        "scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0",
         largeText,
         style
       )}
@@ -96,7 +125,13 @@ export function H4({ children, style }: PropsWithChildren<TypographyProps>) {
 
 export function P({ children, style }: PropsWithChildren<TypographyProps>) {
   return (
-    <p className={cn("leading-7 [&:not(:first-child)]:mt-6", smallText, style)}>
+    <p
+      className={cn(
+        "leading-7 [&:not(:first-child)]:mt-3, [&:not(:last-child)]:mb-3",
+        smallText,
+        style
+      )}
+    >
       {children}
     </p>
   );

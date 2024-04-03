@@ -14,7 +14,7 @@ const router = createBrowserRouter(
       errorElement: <Error404Page></Error404Page>,
     },
   ],
-  { basename: "/bio-webpage" }
+  { basename: "/bio-website" }
 );
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
