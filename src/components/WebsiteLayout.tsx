@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react";
+import { Outlet } from "react-router-dom";
 import { HMax, BlockCenter } from "./typography";
 import headerBg from "@assets/header.jpg";
 
@@ -35,5 +36,13 @@ export function Body({ children }: PropsWithChildren) {
         {children}
       </div>
     </>
+  );
+}
+
+export function RoutedBody() {
+  return (
+    <Body>
+      <Outlet />
+    </Body>
   );
 }
